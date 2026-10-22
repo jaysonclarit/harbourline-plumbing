@@ -1,5 +1,25 @@
 # QA report: Harbourline Plumbing demo
 
+## Live site (2026-10-22): https://harbourline-plumbing.vercel.app
+
+Deployed on Vercel from `main` (commit f611c72). The URL matches `site.url`, so the canonical
+link, `og:url`, sitemap and robots.txt all point at it. Plumber and FAQPage schema are present,
+and the page is `noindex, nofollow` as intended for the demo.
+
+| Live run | Performance | Accessibility | Best practices | SEO  | LCP  | CLS | TBT    |
+| -------- | ----------- | ------------- | -------------- | ---- | ---- | --- | ------ |
+| Mobile   | 97          | 100           | 100            | 69\* | 2.5s | 0   | 120 ms |
+| Desktop  | 100         | 100           | 100            | 69\* | 0.6s | 0   | 0 ms   |
+
+\* Only `is-crawlable` fails (the intended noindex).
+
+Live checks at 375: all 6 in-page links have targets; all 9 phone links dial
+`tel:+61491570156`; sticky call bar shows; no sideways scroll; no console errors; empty form
+submit shows 3 errors, marks the fields invalid and focuses Name; honeypot present. A valid
+submit wasn't sent on the live site (it passed on the local production build).
+
+The sections below are from the local production build.
+
 Re-run 2026-10-22 after the polish pass, against the production build (`next build` +
 `next start`) on localhost. Type-check and lint clean.
 
