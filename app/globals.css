@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/*
+  Harbourline design tokens: "Copper & Harbour"
+  Copper pipe on warm sand, harbour navy for weight.
+  Fluid sizes scale linearly from a 375px to a 1440px viewport.
+*/
+@theme {
+  /* Colour */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-sand-50: #fbf6ee; /* page background, reviews/proof */
+  --color-sand-100: #f3e9da; /* alternate sections, cards */
+  --color-sand-300: #e2d2ba; /* borders, dividers */
+  --color-ink-900: #1b2a33; /* headings, dark break, footer */
+  --color-ink-600: #5b5148; /* secondary text (warm grey) */
+  --color-copper-600: #b4471f; /* primary buttons, white text 5.4:1 */
+  --color-copper-700: #963916; /* primary button hover */
+  --color-copper-400: #d9693a; /* highlights on dark only */
+  --color-harbour-600: #2f6f73; /* icons, links, step numbers */
+  --color-gold-400: #e0a526; /* review stars, decorative only */
+  --color-success: #2e7d4f;
+  --color-error: #b3261e;
+
+  /* Type */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-figtree), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-hero: clamp(2.75rem, 1.69rem + 4.507vw, 5.75rem); /* 44 → 92, hero H1 only */
+  --text-hero--line-height: 0.98;
+  --text-hero--letter-spacing: -0.03em;
+  --text-display: clamp(2.75rem, 2.134rem + 2.629vw, 4.5rem); /* 44 → 72 */
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.025em;
+  --text-h2: clamp(2.25rem, 1.81rem + 1.878vw, 3.5rem); /* 36 → 56 */
+  --text-h2--line-height: 1.06;
+  --text-h2--letter-spacing: -0.02em;
+  --text-stat: clamp(2.25rem, 1.458rem + 3.38vw, 4.5rem); /* 36 → 72, hero stat tiles */
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.03em;
+  --text-h3: clamp(1.375rem, 1.331rem + 0.188vw, 1.5rem); /* 22 → 24 */
+  --text-h3--line-height: 1.25;
+  --text-body-lg: 1.1875rem; /* 19 */
+  --text-body-lg--line-height: 1.55;
+  --text-body: 1.0625rem; /* 17 */
+  --text-body--line-height: 1.6;
+  --text-small: 0.9375rem; /* 15 */
+  --text-small--line-height: 1.5;
+  --text-eyebrow: 0.8125rem; /* 13, uppercase */
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.08em;
+
+  /* Layout */
+  --container-site: 75rem; /* 1200 */
+  --container-prose: 65ch;
+  --spacing-gutter: clamp(1.25rem, 0.81rem + 1.878vw, 2rem); /* 20 → 32 */
+  --spacing-section: clamp(4.5rem, 2.916rem + 6.761vw, 9rem); /* 72 → 144 */
+  --spacing-tap: 3rem; /* 48px minimum tap target */
+  --spacing-callbar: 4rem; /* sticky mobile call bar height */
+
+  /* Shape */
+  --radius-control: 0.625rem; /* 10: buttons, inputs */
+  --radius-card: 1.25rem; /* 20 */
+  --radius-image: 1.75rem; /* 28 */
+  --shadow-soft: 0 1px 2px rgb(27 42 51 / 0.04), 0 14px 36px -14px rgb(91 81 72 / 0.2);
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-sand-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-harbour-600);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Scroll reveal. Only hides content once ScrollReveal has set
+   data-reveal-ready, so nothing is hidden without JS. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    transition:
+      opacity 600ms var(--ease-out-soft),
+      transform 600ms var(--ease-out-soft);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  html[data-reveal-ready] [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
+
+@media print {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
