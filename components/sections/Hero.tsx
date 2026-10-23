@@ -69,8 +69,8 @@ export function Hero() {
           {/* A small stat row under the buttons, on dark (the user's layout). */}
           <ul className="mt-8 grid grid-cols-3 divide-x divide-white/15 sm:flex lg:col-start-1 lg:row-start-5 lg:mt-10">
             {hero.stats.map((stat) => (
-              <li key={stat.label} className="px-4 first:pl-0 sm:px-6">
-                <p className="flex items-center gap-1.5 font-display text-2xl font-semibold leading-none">
+              <li key={stat.label} className="px-3 first:pl-0 sm:px-6">
+                <p className="flex items-center gap-1.5 font-display text-xl font-semibold sm:text-2xl leading-none">
                   <CountUp value={stat.value} />
                   {"stars" in stat && (
                     <>

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { PhoneLink } from "@/components/ui/PhoneLink";
 import { Section } from "@/components/ui/Section";
+import { cn } from "@/lib/cn";
 import { leadForm } from "@/lib/content";
 import { HONEYPOT_FIELD, SERVICE_EVENT, type LeadField, type LeadState } from "@/lib/lead";
 import { anchors } from "@/lib/nav";
@@ -17,6 +18,7 @@ export function LeadForm() {
   const [state, formAction, pending] = useActionState(submitLead, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLHeadingElement>(null);
+  const failedRef = useRef<HTMLDivElement>(null);
   const [service, setService] = useState<string | null>(null);
 
   // Set by a service card's "Get a price" button.
@@ -26,9 +28,11 @@ export function LeadForm() {
     return () => window.removeEventListener(SERVICE_EVENT, onSelect);
   }, []);
 
-  // Move focus to what changed: the thank-you, or the first field to fix.
+  // Move focus to what changed: the thank-you, the send failure, or the first
+  // field to fix.
   useEffect(() => {
     if (state.status === "success") successRef.current?.focus();
+    if (state.status === "failed") failedRef.current?.focus();
     if (state.status === "error") {
       formRef.current?.querySelector<HTMLInputElement>('[aria-invalid="true"]')?.focus();
     }
@@ -59,10 +63,13 @@ export function LeadForm() {
           </p>
         </div>
 
-        <div className="p-6 sm:p-10">
+        <div
+          className={cn("p-6 sm:p-10", state.status === "success" && "flex items-center justify-center")}
+        >
           {state.status === "success" ? (
-            <div className="flex gap-4">
-              <span className="mt-1 flex size-10 shrink-0 items-center justify-center rounded-full bg-success text-white">
+            // Centred in the white panel, both ways, once the form is gone.
+            <div className="flex flex-col items-center gap-4 text-center">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-success text-white">
                 <Icon name="check" className="size-6" />
               </span>
               <div>
@@ -74,7 +81,7 @@ export function LeadForm() {
                   <strong className="whitespace-nowrap font-semibold">{state.phone}</strong>{" "}
                   shortly.
                 </p>
-                <p className="mt-3 flex flex-wrap items-center gap-x-2 text-ink-600">
+                <p className="mt-3 flex flex-wrap items-center justify-center gap-x-2 text-ink-600">
                   Urgent? Call
                   <PhoneLink appearance="text" className="text-ink-900" />
                 </p>
@@ -103,7 +110,8 @@ export function LeadForm() {
                   {fieldOrder.map((field) => {
                     const config = leadForm.fields[field];
                     const error = state.status === "error" ? state.errors[field] : undefined;
-                    const value = state.status === "error" ? state.values[field] : "";
+                    const value =
+                      state.status === "error" || state.status === "failed" ? state.values[field] : "";
                     const id = `lead-${field}`;
                     return (
                       <div key={field}>
@@ -139,6 +147,21 @@ export function LeadForm() {
                     <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" />
                   </label>
                 </div>
+
+                {state.status === "failed" && (
+                  <div
+                    ref={failedRef}
+                    tabIndex={-1}
+                    role="alert"
+                    className="mt-8 rounded-control border-2 border-error p-4 focus:outline-none"
+                  >
+                    <p className="font-semibold text-error">Sorry, your request didn&apos;t go through.</p>
+                    <p className="mt-1 flex flex-wrap items-center gap-x-2">
+                      Please call Dan instead on
+                      <PhoneLink appearance="text" className="text-ink-900" />
+                    </p>
+                  </div>
+                )}
 
                 <Button
                   type="submit"

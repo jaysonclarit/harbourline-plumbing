@@ -10,7 +10,10 @@ export type LeadState =
       errors: Partial<Record<LeadField, string>>;
       values: Record<LeadField, string>;
     }
-  | { status: "success"; name: string; phone: string };
+  | { status: "success"; name: string; phone: string }
+  // Valid lead, but the email to Dan didn't go out. Values are kept so the
+  // person can try again, and the form shows the phone number instead.
+  | { status: "failed"; values: Record<LeadField, string> };
 
 // Name of the hidden honeypot input. People never see it; bots fill it in.
 export const HONEYPOT_FIELD = "company_website";

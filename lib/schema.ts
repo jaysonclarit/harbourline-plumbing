@@ -1,8 +1,8 @@
 // JSON-LD for search engines: Plumber (a LocalBusiness subtype) + FAQPage.
 // Built from site.ts and content.ts so it can't drift from the page.
 //
-// No aggregateRating or review: the reviews are labelled samples and the 4.9
-// is unconfirmed, and Google doesn't allow self-serving review markup on
+// No aggregateRating or review: the business is fictional, the reviews are
+// labelled samples, and Google doesn't allow self-serving review markup on
 // LocalBusiness anyway.
 
 import { faq, serviceAreas } from "./content";

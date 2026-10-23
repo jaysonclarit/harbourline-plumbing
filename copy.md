@@ -9,7 +9,7 @@ Headline:
   Dan's on his way.
 Sub: Licensed plumber and gasfitter. On time, upfront price before we start, and we clean up after.
 Buttons: [Get my price] [Call Dan]
-Trust stats: 4.9 from Google reviews [CONFIRM] · 15 years on the tools · 24/7 emergency call-outs
+Trust stats: 24/7 emergency call-outs · Mon-Sat 7am-6pm · Licensed plumber and gasfitter
 Owner card: "I answer my own phone." - Dan
 
 ## Lead form
@@ -36,9 +36,6 @@ You get a fixed price before any work starts.
 - Clean worksite: shoe covers on, mess gone when we leave
 - Licensed and insured: plumbing and gas, NSW
 
-## Brands we service
-(Placeholder text wordmarks only, no real logos in the demo)
-
 ## Recent jobs
 - Hot water swap, Merewether: old unit out, new one running same day
 - Blocked sewer, Lambton: tree roots cleared, camera checked
@@ -53,7 +50,7 @@ You get a fixed price before any work starts.
 1 Call or send the form · 2 Dan calls back and books a time · 3 Fixed price before we start · 4 Fixed, cleaned up, done
 
 ## Meet Dan
-Dan has been a plumber around Newcastle for 15 years. He started Harbourline because he was sick of customers waiting all day for a no-show. Small team, his own phone, his own name on every job.
+Dan is a licensed plumber and gasfitter working across Newcastle and Lake Macquarie. He started Harbourline because he was sick of customers waiting all day for a no-show. Small team, his own phone, his own name on every job.
 
 ## Service areas
 Newcastle and Lake Macquarie: Merewether · Adamstown · Hamilton · Lambton · New Lambton · Kotara · Charlestown · Mayfield · Wallsend · Warners Bay

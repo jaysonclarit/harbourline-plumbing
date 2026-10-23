@@ -7,9 +7,10 @@ export const hero = {
   headline: ["Hot water out?", "Drain blocked?", "Dan's on his way."],
   sub: "Licensed plumber and gasfitter. On time, upfront price before we start, and we clean up after.",
   stats: [
-    { tag: "Rating", value: "4.9", label: "from Google reviews", stars: true }, // [CONFIRM] rating
-    { tag: "Experience", value: "15", label: "years on the tools" }, // [CONFIRM] years trading
+    // Facts from CLAUDE.md only, no invented numbers.
     { tag: "Emergencies", value: "24/7", label: "emergency call-outs" },
+    { tag: "Hours", value: "Mon-Sat", label: "7am-6pm" },
+    { tag: "Licence", value: "Licensed", label: "plumber and gasfitter" },
   ],
   photo: {
     src: "/img/hero.webp",
@@ -75,21 +76,6 @@ export const whyUs = {
     { icon: "clock", title: "On time, or we call ahead", body: "No waiting around all day." },
     { icon: "sparkle", title: "Clean worksite", body: "Shoe covers on, mess gone when we leave." },
     { icon: "shield-check", title: "Licensed and insured", body: "Plumbing and gas, NSW." },
-  ],
-} as const;
-
-export const brands = {
-  title: "Brands we service",
-  // Placeholder logos from logoipsum.com, recoloured to ink-600. No real brands
-  // in the demo. [CONFIRM] Swap for the brands Dan actually services and stocks.
-  // width/height are each SVG's viewBox, so next/image keeps the aspect.
-  logos: [
-    { src: "/img/brands/brand-1.svg", width: 240, height: 40 },
-    { src: "/img/brands/brand-2.svg", width: 169, height: 40 },
-    { src: "/img/brands/brand-3.svg", width: 303, height: 40 },
-    { src: "/img/brands/brand-4.svg", width: 257, height: 45 },
-    { src: "/img/brands/brand-5.svg", width: 268, height: 40 },
-    { src: "/img/brands/brand-6.svg", width: 240, height: 49 },
   ],
 } as const;
 
@@ -159,8 +145,7 @@ export const meetDan = {
   title: "Meet Dan",
   quote: "I answer my own phone.", // moved here from the hero
   paragraphs: [
-    // [CONFIRM] 15 years
-    "Dan has been a plumber around Newcastle for 15 years. He started Harbourline because he was sick of customers waiting all day for a no-show.",
+    "Dan is a licensed plumber and gasfitter working across Newcastle and Lake Macquarie. He started Harbourline because he was sick of customers waiting all day for a no-show.",
     // [CONFIRM] small team
     "Small team, his own phone, his own name on every job.",
   ],

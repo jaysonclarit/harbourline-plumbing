@@ -1,4 +1,3 @@
-import { Brands } from "@/components/sections/Brands";
 import { DarkBreak } from "@/components/sections/DarkBreak";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -27,7 +26,6 @@ export default function Home() {
       <Services />
       <DarkBreak />
       <WhyUs />
-      <Brands />
       <RecentJobs />
       <Reviews />
       <HowItWorks />
